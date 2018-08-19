@@ -1,0 +1,51 @@
+.mainBodyWrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.gridWrap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: bottom;
+    width: 190px;
+    border: 1px solid rgb(243, 133, 151);
+    margin-bottom: 20px;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+/* shape specs */
+.shape{
+    position: relative;
+    width: 15px;
+    height: 15px;
+    color: grey;
+    border: 2px solid rgb(243, 133, 151);
+    background-color: red;
+}
+
+#special{
+    background-color: blue;
+}
+
+/* display none on top four */
+/* #root > div > div > div > div:nth-child(1){
+    display: none;
+}
+#root > div > div > div > div:nth-child(2){
+    display: none;
+}
+#root > div > div > div > div:nth-child(3){
+    display: none;
+}
+#root > div > div > div > div:nth-child(4){
+    display: none;
+} */
