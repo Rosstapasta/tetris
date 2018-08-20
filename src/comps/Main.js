@@ -71,27 +71,42 @@ class Main extends Component {
         theGrid.unshift(this.state.shapes[whichShape][2]);
         theGrid.unshift(this.state.shapes[whichShape][1]);
         theGrid.unshift(this.state.shapes[whichShape][0]);
-        theGrid = theGrid.splice(20, 23);
-        this.setState({grid: theGrid});
-        console.log(theGrid);
+        theGrid.splice(4, 4);
 
+        this.setState({grid: theGrid}, ()=>{
+            this.gameUpdate();
+        });
+
+    }
+    
+    gameUpdate(){
         var thisGrid = this.state.grid;
-        setTimeout(function(){
-            var level = 4;
-            for(let i = 0; i <= 23; i++){
-                if(thisGrid[level].every(function(value){
-                    return value === 0;
-                }) === true){
-                    console.log("yes it is")
+            var level = 0;
+            for(var i = 22; i >= 0; i--){
+                for(var j = 0; j <= 9; j++){
+                    var secondVal = i + 1;
+                    
+                    if(thisGrid[i][j] === 1 && thisGrid[secondVal][j] === 0){
+                        thisGrid[i][j] = 0;
+                        thisGrid[secondVal][j] = 1;
+                    }
                 }
             }
-            console.log(thisGrid, "this grid")
-        }, 1000);
+
+        this.setState({grid: thisGrid}, ()=>{
+            this.gameUpdate2();
+        })
     }
 
-    gameUpdate(){
-
+    gameUpdate2(){
+        setTimeout(()=>{
+            this.gameUpdate();
+        }, 500)
     }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+      }
 
     newShape(){
 
